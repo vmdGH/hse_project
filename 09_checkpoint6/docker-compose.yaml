@@ -1,0 +1,22 @@
+services:
+  app:
+    build: app
+    # lication
+    ports: 
+      - "5051:5001"
+    environment:
+      - BASE_URL=https://www.tinkoff.ru/invest/social/profile/
+      # - QUESTION_CONTEXT=
+      - AUTHORS=vadya93,Poltrader,Mentalio,bytony,Vladislavzz,CyberMoneyFunnyPunk,artydevCo,ALL_TIME_TRADING,misterminator,Borodainvestora,pavelpower,Axelrod_stream,grib57,Anonimprodavec2020,PavelPK,linmath,Karsotel
+      - USER_AGENT=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36
+      - DS_API_KEY=sk-a8b2b1aea0f940fbb135a36e7ae16302
+    volumes:
+      - ./data:/app/data 
+
+  bot:
+    build: bot
+    environment:
+      - BOT_TOKEN=6961140643:AAFH4dCjBRs_eNcIFV2Jlzf-kU-vL6UgNAw
+      - AUTHORS=vadya93,Poltrader,Mentalio,bytony,Vladislavzz,CyberMoneyFunnyPunk,artydevCo,ALL_TIME_TRADING,misterminator,Borodainvestora,pavelpower,Axelrod_stream,grib57,Anonimprodavec2020,PavelPK,linmath,Karsotel
+    volumes:
+      - ./output:/bot/output
